@@ -7,7 +7,7 @@ beforeEach(()=>{
     cy.visit('/')
 })
 
-    it('TC1:login_succesfully',()=>{
+    it.only('TC1:login_succesfully',()=>{
         //arragement
         const user1 = 'standard_user' 
         const pass ='secret_sauce'
@@ -18,7 +18,7 @@ beforeEach(()=>{
 
         //assert
         cy.get('.header_secondary_container').should('exist')
-        cy.wait(3000);
+        //cy.wait(3000);
 
     })
 
@@ -50,7 +50,7 @@ beforeEach(()=>{
 
         //assert
         loginPage.checkMessage('Epic sadface: Password is required')
-        cy.wait(3000);
+        //cy.wait(3000);
 
     })
 
@@ -63,7 +63,7 @@ beforeEach(()=>{
 
         //assert
         loginPage.checkMessage('Epic sadface: Username is required')
-        cy.wait(3000);
+       // cy.wait(3000);
 
     })
 
@@ -80,11 +80,11 @@ beforeEach(()=>{
 
         //assert
         loginPage.checkMessage('Epic sadface: Username and password do not match any user in this service')
-        cy.wait(3000);
+        //cy.wait(3000);
     })
     
 
-    it.only('TC6:Locked_user',()=>{
+    it('TC6:Locked_user',()=>{
         //arragement
       
         const user3 = 'locked_out_user' 
@@ -97,7 +97,7 @@ beforeEach(()=>{
 
         //assert
         loginPage.checkMessage('Epic sadface: Sorry, this user has been locked out.')
-        cy.wait(3000);
+        //cy.wait(3000);
     })
 
 })

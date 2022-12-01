@@ -7,7 +7,7 @@ beforeEach(()=>{
     cy.visit('/')
 })
 
-    it.only('TC1:login_succesfully',()=>{
+    it('TC1:login_succesfully',()=>{
         //arragement
         const user1 = 'standard_user' 
         const pass ='secret_sauce'

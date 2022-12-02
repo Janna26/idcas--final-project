@@ -1,11 +1,12 @@
-import User from './data.js'
+import User from './pages/data.js'
 import loginPage from './pages/loginPage.js'
 
 describe ('Login test', ()=>{
 //Hooks
-beforeEach(()=>{
+beforeEach('Precondition',()=>{
     cy.visit('/')
 })
+
 
     it('TC1:login_succesfully',()=>{
         //arragement
@@ -100,5 +101,20 @@ beforeEach(()=>{
         //cy.wait(3000);
     })
 
-})
+    it.only('TC7: Logout',()=>{
+        const user1 = 'standard_user' 
+        const pass ='secret_sauce'
+        loginPage.userInput().type(user1)
+        loginPage.passInput().type(pass)
+        loginPage.submit().click()
+        cy.get('.title').should('contain.text', 'Products');
+        cy.logout();
+        cy.url().should('eq','https://www.saucedemo.com/')
+        
+      
 
+    })
+
+ })
+
+    

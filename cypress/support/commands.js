@@ -33,6 +33,11 @@ Cypress.Commands.add('login',(user1, pass)=>{
     loginPage.userInput().type(user1)
     loginPage.passInput().type(pass)
     loginPage.submit().click()
+   
+});
 
-    
+
+Cypress.Commands.add('logout',()=>{
+    cy.get('#react-burger-menu-btn').click();
+    cy.get('#logout_sidebar_link').click();
 })

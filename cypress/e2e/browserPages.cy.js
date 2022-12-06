@@ -1,6 +1,6 @@
 import loginPage from './pages/loginPage.js'
 
-describe ('FBrowsing',()=>{
+describe ('Browsing',()=>{
     before('Precondition',()=>{
         cy.visit('/')
         const user1 = 'standard_user' 
@@ -14,45 +14,48 @@ describe ('FBrowsing',()=>{
         cy.get('.title').should('have.text', 'Products')
 
     })
-
-    it('TC1: Visit the section of all items',()=>{
+    context('Burger Menu',()=>{
+        it('TC1: Visit the section of all items',()=>{
 
         cy.get('#react-burger-menu-btn').click({force:true});
         cy.get('#inventory_sidebar_link').click({force:true});
         cy.url().should('eq','https://www.saucedemo.com/inventory.html')
-       
+        
     })
 
     it('TC2:Visit the About section',()=>{
 
         cy.get('#react-burger-menu-btn').click({force:true});
-        cy.get('#about_sidebar_link').click({force:true});
-        cy.url().should('eq','https://saucelabs.com/')
-        cy.go(-1)
+        cy.get('#about_sidebar_link').then(($el)=>{
+            $el.attr('target','_blank');
+        }).click({force:true});
+       cy.url().should('eq','https://www.saucedemo.com/inventory.html')
 
-        
-       
     })
 
-   /* it('TC3:Visit the Reset App State section',()=>{
-        //This option is not working
+   //This option is not working in the APP
+   it.skip('TC3:Visit the Reset App State section',()=>{
+    
         cy.get('#react-burger-menu-btn').click({force:true});
         cy.get('#reset_sidebar_link').click({force:true});
         cy.url().should('eq','https://www.saucedemo.com/inventory.html')
         cy.get('#react-burger-cross-btn').click({force:true});
-    
+        cy.go(-1)
 
     })
-   
-   */
 
-    it('TC4:Visit Twitter Page',()=>{
+})
+    
+   
+   
+    context('Test Social Media',()=>{
+       it('TC4:Visit Twitter Page',()=>{
 
         cy.get('.footer').
         should('have.text', 'TwitterFacebookLinkedIn© 2022 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
         cy.get('.social_twitter > a').click({force:true})
         cy.url().should('eq','https://www.saucedemo.com/inventory.html')
-        //cy.go(-1)
+        
     })
 
     it('TC5:Visit Facebook Page',()=>{
@@ -64,14 +67,16 @@ describe ('FBrowsing',()=>{
        
     })
 
-    it.only('TC6:Visit Linkedin Page',()=>{
+    it('TC6:Visit Linkedin Page',()=>{
 
         cy.get('.footer').
         should('have.text', 'TwitterFacebookLinkedIn© 2022 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy')
         cy.get('.social_linkedin > a').click({force:true})
         cy.url().should('eq','https://www.saucedemo.com/inventory.html')
        
-    })
+    }) 
+ })
+    
     
 
 })

@@ -101,7 +101,7 @@ beforeEach('Precondition',()=>{
         //cy.wait(3000);
     })
 
-    it.only('TC7: Logout',()=>{
+    it('TC7: Logout',()=>{
         const user1 = 'standard_user' 
         const pass ='secret_sauce'
         loginPage.userInput().type(user1)

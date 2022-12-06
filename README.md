@@ -13,7 +13,7 @@
 
 //
 Purchase flow:
-
+**Shopping-cart flow
 - Carry out the purchase flow by selecting an item.
 - Carry out the purchase flow by selecting an item and returning to the Home Page.
 - Carry out purchase flow by selecting more than one item.
@@ -24,3 +24,12 @@ Purchase flow:
 - Carry out the purchase flow and do not enter the name in Checkout.
 - Carry out the purchase flow and do not enter the last name in Checkout.
 - Carry out the purchase flow and do not enter the zip code at Checkout.
+
+
+// Browsing
+- Login and visit the section of all items.
+- Log in and visit the About section
+- Log in and visit the Reset App State section
+- Visit Twitter Page
+- Visit Facebook Page
+- Visit Linkedin Page

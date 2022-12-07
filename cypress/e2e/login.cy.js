@@ -1,4 +1,4 @@
-import { Context } from 'mocha'
+
 import User from './pages/data.js'
 import loginPage from './pages/loginPage.js'
 
@@ -8,9 +8,9 @@ beforeEach('Precondition',()=>{
     cy.visit('/')
 })
 
-    Context('Login test',()=>{
-
-        it.only('TC1:login_succesfully',()=>{
+    
+    context('Login test',()=>{
+        it('TC1:login_succesfully',()=>{
             //arragement
             const user1 = 'standard_user' 
             const pass ='secret_sauce'
@@ -103,9 +103,8 @@ beforeEach('Precondition',()=>{
             //cy.wait(3000);
         })
     })
-    
-    context('Logout', ()=>{
-        
+
+    context('Logout test',()=>{
         it('TC7: Logout',()=>{
         const user1 = 'standard_user' 
         const pass ='secret_sauce'
@@ -119,9 +118,9 @@ beforeEach('Precondition',()=>{
       
 
     })
-})
-    
 
  })
+    
+})
 
     

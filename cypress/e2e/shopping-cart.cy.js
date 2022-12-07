@@ -6,6 +6,8 @@ describe ('Purchase flow',()=>{
         
         const user1 = 'standard_user' 
         const pass ='secret_sauce'
+        /*const userName ='Janna'
+        const lastName='Aquino'*/
 
         loginPage.userInput().type(user1)
         loginPage.passInput().type(pass)
@@ -14,18 +16,26 @@ describe ('Purchase flow',()=>{
         cy.get('.header_secondary_container').should('exist')
         cy.get('.title').should('have.text', 'Products')
 
+        /*cart.userName().type(userName)
+        cart.lastName().type(lastName)*/
+
     })
 
     it('TC1: Carry out the purchase flow by selecting one item.',()=>{
 
-        cy.fixture('index').then((index)=>{
+        cy.fixture('cart').then((cart)=>{
             cy.get('.inventory_item_label').contains('Sauce Labs Backpack')
-            cy.get(index.addCartButton).click();
-            cy.get(index.cartLink).click();
-            /*cy.get(index.containerCart).type('Your cart');
-            cy.get(index.checkoutBtt).click();
-            cy.get(index.checoutInfo).type('Checkout: Your information')
-           */
+            cy.get(cart.add).first().click();
+            cy.get(cart.cartLink).click();
+            cy.get(cart.checkoutBtt).click();
+            cy.get(cart.userName).type('Janna')
+            cy.get(cart.lastName).type('Aquino')
+            cy.get(cart.zipCode).type('10014')
+            cy.get(cart.continueBtt).click();
+            cy.get(cart.finishBtt).click();
+            cy.get(cart.backHome).contains('Back Home')
+            cy.wait(1000);
+            cy.get(cart.backHome).click();
 
         })
        

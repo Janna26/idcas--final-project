@@ -14,7 +14,7 @@ describe ('Browsing',()=>{
         cy.get('.title').should('have.text', 'Products')
 
     })
-    context('Burger Menu',()=>{
+    context('Burger Menu test',()=>{
         it('TC1: Visit the section of all items',()=>{
 
         cy.get('#react-burger-menu-btn').click({force:true});
@@ -48,7 +48,7 @@ describe ('Browsing',()=>{
     
    
    
-    context('Test Social Media',()=>{
+    context('Social Media test',()=>{
        it('TC4:Visit Twitter Page',()=>{
 
         cy.get('.footer').

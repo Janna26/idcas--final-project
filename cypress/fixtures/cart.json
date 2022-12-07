@@ -1,13 +1,17 @@
 {
 
-    "add":"btn btn_primary btn_small btn_inventory",
+    "add":".btn_inventory",
     "cartLink":".shopping_cart_link",
     "containerCart": ".header_secondary_container",
     "removeBtt":"remove-sauce-labs-backpack",
-    "checkoutBtt":"checkout",
-    "checoutInfo":"#checkout_info_container",
-    "cancelBtt":"cancel",
-    "continueBtt":"continue",
+    "checkoutBtt":"#checkout",
+    "checkoutInfo":"#checkout_info_container",
+    "cancelBtt":"#cancel",
+    "continueBtt":"#continue",
     "checkoutOverview":".cart_list",
-    "finishBtt":"finish"
+    "finishBtt":"#finish",
+    "userName": "#first-name",
+    "lastName":"#last-name",
+    "zipCode":"#postal-code",
+    "backHome":"#back-to-products"
 }

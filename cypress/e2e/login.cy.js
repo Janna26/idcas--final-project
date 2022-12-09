@@ -10,7 +10,7 @@ beforeEach('Precondition',()=>{
 
     
     context('Login test',()=>{
-        it('TC1:login_succesfully',()=>{
+        it('TC1:Login succesfully',()=>{
             //arragement
             const user1 = 'standard_user' 
             const pass ='secret_sauce'
@@ -25,7 +25,7 @@ beforeEach('Precondition',()=>{
     
         })
     
-        it('TC2:user_empty',()=>{
+        it('TC2:Login without entering the username',()=>{
             //arragement
           
             const pass ='secret_sauce'
@@ -37,11 +37,11 @@ beforeEach('Precondition',()=>{
     
             //assert
             loginPage.checkMessage('Epic sadface: Username is required')
-            cy.wait(3000);
+            //cy.wait(3000);
     
         })
     
-        it('TC3:pass_empty',()=>{
+        it('TC3:Login without entering password',()=>{
             //arragement
           
             const user1 = 'standard_user'
@@ -57,7 +57,7 @@ beforeEach('Precondition',()=>{
     
         })
     
-        it('TC4:credentials_empty',()=>{
+        it('TC4:Login without entering credentials',()=>{
             //arragement
           
             //action
@@ -70,7 +70,7 @@ beforeEach('Precondition',()=>{
     
         })
     
-        it('TC5:invalid_credentials',()=>{
+        it('TC5:Login with invalid credentials',()=>{
             //arragement
           
             const user1 = 'Janna'
@@ -87,7 +87,7 @@ beforeEach('Precondition',()=>{
         })
         
     
-        it.only('TC6:Locked_user',()=>{
+        it('TC6:Login with locked User',()=>{
             //arragement
           
             const user3 = 'locked_out_user' 

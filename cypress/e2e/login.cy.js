@@ -87,7 +87,7 @@ beforeEach('Precondition',()=>{
         })
         
     
-        it('TC6:Locked_user',()=>{
+        it.only('TC6:Locked_user',()=>{
             //arragement
           
             const user3 = 'locked_out_user' 

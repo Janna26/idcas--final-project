@@ -5,7 +5,7 @@ describe ('Purchase flow',()=>{
     beforeEach('Precondition',()=>{
         cy.visit('/')
         
-        const user1 = 'standard_user' 
+        const user4 = 'performance_glitch_user' 
         const pass ='secret_sauce'
         
 
@@ -14,7 +14,7 @@ describe ('Purchase flow',()=>{
         const lastName='Aquino'
         const zipCode='10014'*/
 
-        loginPage.userInput().type(user1)
+        loginPage.userInput().type(user4)
         loginPage.passInput().type(pass)
         loginPage.submit().click()
 
@@ -27,22 +27,25 @@ describe ('Purchase flow',()=>{
         cart.zipCode().type(zipCode)*/
     })
 
-    it('TC1: Carry out the purchase flow by selecting one item.',()=>{
+    it.skip('TC1: Carry out the purchase flow by selecting one item.',()=>{
 
         cy.fixture('cart').then((cart)=>{
             cy.get('#item_4_title_link').contains('Sauce Labs Backpack')
             cy.get(cart.add).first().click();
             cy.get(cart.cartLink).click();
-            //cy.wait(3000);
             cy.get(cart.checkoutBtt).click();
-            cy.get(cart.userName).type('Janna')
-            cy.get(cart.lastName).type('Aquino')
-            cy.get(cart.zipCode).type('10014')
+
+        cy.fixture('infoUser').then((info)=>{
+            cy.get(info.userName).type('Janna')
+            cy.get(info.lastName).type('Aquino')
+            cy.get(info.zipCode).type('10014')
+            })
+           
             cy.get(cart.continueBtt).click();
-           // cy.wait(3000);
             cy.get(cart.finishBtt).click();
-            //cy.wait(3000);
             cy.get(cart.backHome).click();
+
+            cy.get('.title').should('have.text', 'Products')
 
         })
        
@@ -50,26 +53,36 @@ describe ('Purchase flow',()=>{
 
     it.skip('TC2: Carry out purchase flow by selecting more than one item.',()=>{
 
-        cy.fixture('cart').then((cart)=>{
-            cy.get(cart.inventContainer).eq(3).click();
-            cy.get(cart.add).click();
-           
+        cy.fixture('items').then((item)=>{
 
+            for (var key = 0; key < 2; key++) {
+
+              cy.get( item[Object.keys(item)[key]]).click();
+             }
+            
+        })
+
+        cy.fixture('cart').then((cart)=>{
+            cy.get(cart.cartLink).click();
         })
 
     })
 
 
-    it('TC3:Carry out the purchase flow by selecting more than one item and closing the session.',()=>{
+    it.skip('TC3:Carry out the purchase flow by selecting more than one item and closing the session.',()=>{
 
         cy.fixture('cart').then((cart)=>{
             cy.get('.inventory_item_label').contains('Sauce Labs Backpack')
             cy.get(cart.add).first().click();
             cy.get(cart.cartLink).click();
             cy.get(cart.checkoutBtt).click();
-            cy.get(cart.userName).type('Janna')
-            cy.get(cart.lastName).type('Aquino')
-            cy.get(cart.zipCode).type('10014')
+
+         cy.fixture('infoUser').then((info)=>{
+                cy.get(info.userName).type('Janna')
+                cy.get(info.lastName).type('Aquino')
+                cy.get(info.zipCode).type('10014')
+            })
+
             cy.get(cart.continueBtt).click();
             cy.get(cart.finishBtt).click();
             cy.get(cart.backHome).click();
@@ -123,7 +136,7 @@ describe ('Purchase flow',()=>{
 
     })
 
-    it('TC7: Carry out the purchase flow and do not enter the name in Checkout.',()=>{
+    it.skip('TC7: Carry out the purchase flow and do not enter the name in Checkout.',()=>{
 
         cy.fixture('cart').then((cart)=>{
             
@@ -131,35 +144,43 @@ describe ('Purchase flow',()=>{
             cy.get(cart.add).first().click();
             cy.get(cart.cartLink).click();
             cy.get(cart.checkoutBtt).click();
-           // cy.get(cart.userName).type('Janna')
-            cy.get(cart.lastName).type('Aquino')
-            cy.get(cart.zipCode).type('10014')
+
+            cy.fixture('infoUser').then((info)=>{
+                cy.get(info.lastName).type('Aquino')
+                cy.get(info.zipCode).type('10014')
+                })
             cy.get(cart.continueBtt).click();
             loginPage.checkMessage2('Error: First Name is required')
+
+            cy.get('.title').should('have.text', 'Checkout: Your Information')
         
         })
 
     })
 
-    it('TC8:Carry out the purchase flow and do not enter the last name in Checkout.',()=>{
+    it.only('TC8:Carry out the purchase flow and do not enter the last name in Checkout.',()=>{
 
         cy.fixture('cart').then((cart)=>{
             cy.get('.inventory_item_label').contains('Sauce Labs Backpack')
             cy.get(cart.add).first().click();
             cy.get(cart.cartLink).click();
             cy.get(cart.checkoutBtt).click();
-            cy.get(cart.userName).type('Janna')
-            //cy.get(cart.lastName).type('Aquino')
-            cy.get(cart.zipCode).type('10014')
+
+        cy.fixture('infoUser').then((info)=>{
+            cy.get(info.userName).type('Janna')
+            cy.get(info.zipCode).type('10014')
+                })
+
             cy.get(cart.continueBtt).click();
             loginPage.checkMessage2('Error: Last Name is required')
             
+            cy.get('.title').should('have.text', 'Checkout: Your Information')
             
         })
 
     })
 
-    it('TC9: Carry out the purchase flow and do not enter the zip code at Checkout.',()=>{
+    it.only('TC9: Carry out the purchase flow and do not enter the zip code at Checkout.',()=>{
 
         cy.fixture('cart').then((cart)=>{
             
@@ -167,13 +188,29 @@ describe ('Purchase flow',()=>{
             cy.get(cart.add).first().click();
             cy.get(cart.cartLink).click();
             cy.get(cart.checkoutBtt).click();
-            cy.get(cart.userName).type('Janna')
-            cy.get(cart.lastName).type('Aquino')
-            //cy.get(cart.zipCode).type('10014')
+
+        cy.fixture('infoUser').then((info)=>{
+                cy.get(info.userName).type('Janna')
+                cy.get(info.lastName).type('Aquino')
+             })
+             
             cy.get(cart.continueBtt).click();
             loginPage.checkMessage2('Error: Postal Code is required')
+            
+            cy.get('.title').should('have.text', 'Checkout: Your Information')
+        })
+
+    })
+
+    it('TC10: Select multiple items and refresh the page..',()=>{
+
+        cy.fixture('').then(()=>{
+            
+            
             
         })
 
     })
+
+    
 })

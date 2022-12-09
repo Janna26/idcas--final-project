@@ -10,12 +10,8 @@
     "continueBtt":"#continue",
     "checkoutOverview":".cart_list",
     "finishBtt":"#finish",
-    "userName": "#first-name",
-    "lastName":"#last-name",
-    "zipCode":"#postal-code",
     "backHome":"#back-to-products",
     "inventoryContainer":"#inventory_container", 
     "inventContainer":".inventory_container", 
-    "contShopping":"#continue-shopping"
-    
+    "contShopping":"#continue-shopping" 
 }

@@ -1,10 +1,19 @@
 # idcas--final-project
 
-* Testing
-* testing
-* Este es el proyecto final de lo aprendido en el diplomado de Cypress e2e.
+* Este es el proyecto final de lo aprendido en el diplomado de Cypress E2E.
 
 * Test cases
+
+
+//Login Test:
+- Login succesfully
+- Login without entering the username
+- Login without entering password
+- Login without entering credentials
+- Login with invalid credentials
+- Login with locked User
+- Logout
+
 //Article filter:
 - Filter articles Name (A to Z)
 - Filter items Name (Z to A)
@@ -15,7 +24,6 @@
 Purchase flow:
 **Shopping-cart flow
 - Carry out the purchase flow by selecting an item.
-- Carry out the purchase flow by selecting an item and returning to the Home Page.
 - Carry out purchase flow by selecting more than one item.
 - Carry out the purchase flow by selecting more than one item and closing the session.
 - Make a purchase of more than one item and remove one or more from the cart.
@@ -24,6 +32,7 @@ Purchase flow:
 - Carry out the purchase flow and do not enter the name in Checkout.
 - Carry out the purchase flow and do not enter the last name in Checkout.
 - Carry out the purchase flow and do not enter the zip code at Checkout.
+- Select multiple items and refresh the page.
 
 
 // Browsing

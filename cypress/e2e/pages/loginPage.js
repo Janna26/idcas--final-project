@@ -26,11 +26,15 @@ const checkMessage =(message)=>{
 
 }
 
-const checkMessage2 =(message)=>{
+const checkMessage2 =()=>{
     cy.get('#continue').click();
 
 }
 
+//it is not using
+const userName =()=>{
+    return cy.get('#first-name')
+}
 
 export default {
     userInput,
@@ -38,5 +42,6 @@ export default {
     submit,
     logout,
     checkMessage,
-    checkMessage2
+    checkMessage2,
+    userName
 }

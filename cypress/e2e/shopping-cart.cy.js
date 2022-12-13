@@ -103,9 +103,30 @@ describe ('Purchase flow',()=>{
 
     })
 
-    it.skip('TC4:Make a purchase of more than one item and remove one or more from the cart.',()=>{
+    it.only('TC4:Select more than one item and remove one or more from the cart.',
+    ()=>{
 
-        cy.fixture('cart').then((cart)=>{
+        cy.fixture('items').then((item)=>{
+
+            for (let key = 0; key <4; key++) {
+
+              cy.get(item[Object.keys(item)[key]]).click();
+             }    
+        })
+
+        cy.fixture('removeItems').then((remove)=>{
+
+            for (let key = 0; key <2; key++) {
+
+                cy.get(remove[Object.keys(remove)[key]]).click();
+               } 
+                
+              
+        })
+
+       
+
+        /*cy.fixture('cart').then((cart)=>{
             cy.get('#item_0_title_link').contains('Sauce Labs Bike Light')
             cy.get(cart.add).first().click();
             cy.get(cart.cartLink).click();
@@ -121,13 +142,13 @@ describe ('Purchase flow',()=>{
             cy.get(cart.finishBtt).click();
             cy.get(cart.backHome).click();
             cy.logout();
+            */
             
-            
-        })
+        
 
     })
 
-    it.skip('TC5: Make a purchase of more than one item and return to the cart.',()=>{
+    it.skip('TC5: Select more than one item and return to the cart.',()=>{
 
         cy.fixture('cart').then((cart)=>{
            
@@ -137,7 +158,7 @@ describe ('Purchase flow',()=>{
 
     })
 
-    it.skip('TC6: Make a purchase of more than one item and return to the cart, select n items and complete the flow.',()=>{
+    it.skip('TC6: Select more than one item and return to the cart, select n items and complete the flow.',()=>{
 
         cy.fixture('cart').then((cart)=>{
            

@@ -1,6 +1,7 @@
 {
 
     "add":".btn_inventory",
+    "remove":"#remove-sauce-labs-backpack",
     "cartLink":".shopping_cart_link",
     "containerCart": ".header_secondary_container",
     "removeBtt":"#remove-sauce-labs-backpack",

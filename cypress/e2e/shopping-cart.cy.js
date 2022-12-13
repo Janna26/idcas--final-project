@@ -119,36 +119,14 @@ describe ('Purchase flow',()=>{
             for (let key = 0; key <2; key++) {
 
                 cy.get(remove[Object.keys(remove)[key]]).click();
-               } 
-                
-              
+               }         
         })
 
-       
-
-        /*cy.fixture('cart').then((cart)=>{
-            cy.get('#item_0_title_link').contains('Sauce Labs Bike Light')
-            cy.get(cart.add).first().click();
-            cy.get(cart.cartLink).click();
-            cy.get(cart.removeBtt).click();
-            cy.wait(3000)
-            cy.get(cart.contShopping).click();
-            //
-            cy.get(cart.checkoutBtt).click();
-            cy.get(cart.userName).type('Janna')
-            cy.get(cart.lastName).type('Aquino')
-            cy.get(cart.zipCode).type('10014')
-            cy.get(cart.continueBtt).click();
-            cy.get(cart.finishBtt).click();
-            cy.get(cart.backHome).click();
-            cy.logout();
-            */
-            
-        
+        cy.get('.title').should('have.text', 'Products')
 
     })
 
-    it.skip('TC5: Select more than one item and return to the cart.',()=>{
+    it.skip('TC5: Select more than one item, remove from Description page and return to Products page.',()=>{
 
         cy.fixture('cart').then((cart)=>{
            

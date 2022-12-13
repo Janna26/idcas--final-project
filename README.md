@@ -27,7 +27,7 @@ Purchase flow:
 - Carry out purchase flow by selecting more than one item.
 - Carry out the purchase flow by selecting more than one item and closing the session.
 - Select more than one item and remove one or more from the cart.
-- Select more than one item and return to the cart.
+- Select more than one item, remove from Description page and return to Products page.
 - Select more than one item and return to the cart, select n items and complete the flow.
 - Carry out the purchase flow and do not enter the name in Checkout.
 - Carry out the purchase flow and do not enter the last name in Checkout.

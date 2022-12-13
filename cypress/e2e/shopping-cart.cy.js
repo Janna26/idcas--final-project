@@ -18,11 +18,11 @@ describe ('Purchase flow',()=>{
 
     })
 
-    it.only('TC1: Carry out the purchase flow by selecting one item.',()=>{
+    it('TC1: Carry out the purchase flow by selecting one item.',()=>{
 
        cy.fixture('items').then((item)=>{
 
-            for (var key = 0; key <1; key++) {
+            for (let key = 0; key <1; key++) {
 
               cy.get(item[Object.keys(item)[key]]).click();
              }    
@@ -213,7 +213,7 @@ describe ('Purchase flow',()=>{
 
     })
 
-    it.skip('TC10: Select multiple items and refresh the page..',()=>{
+    it.skip('TC10: Select multiple items and refresh the page clicking "reset App State" option.',()=>{
 
         cy.fixture('').then(()=>{
             

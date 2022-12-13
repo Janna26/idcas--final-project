@@ -1,7 +1,7 @@
 import loginPage from './pages/loginPage.js'
 
 describe ('Browsing',()=>{
-    before('Precondition',()=>{
+    beforeEach('Precondition',()=>{
         cy.visit('/')
         const user1 = 'standard_user' 
         const pass ='secret_sauce'
@@ -34,7 +34,7 @@ describe ('Browsing',()=>{
     })
 
    //This option is not working in the APP
-   it.skip('TC3:Visit the Reset App State section',()=>{
+   it('TC3:Visit the Reset App State section',()=>{
     
         cy.get('#react-burger-menu-btn').click({force:true});
         cy.get('#reset_sidebar_link').click({force:true});

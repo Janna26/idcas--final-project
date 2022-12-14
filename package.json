@@ -1,0 +1,23 @@
+{
+  "name": "idcas--final-project",
+  "version": "1.0.0",
+  "description": "* Este es el proyecto final de lo aprendido en el diplomado de Cypress E2E.",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Janna26/idcas--final-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Janna26/idcas--final-project/issues"
+  },
+  "homepage": "https://github.com/Janna26/idcas--final-project#readme",
+  "devDependencies": {
+    "cypress": "^12.0.2"
+  }
+}

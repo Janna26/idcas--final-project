@@ -18,11 +18,11 @@ describe ('Purchase flow',()=>{
 
     })
 
-    it.only('TC1: Carry out the purchase flow by selecting one item.',()=>{
+    it('TC1: Carry out the purchase flow by selecting one item.',()=>{
 
        cy.fixture('items').then((item)=>{
 
-            for (var key = 0; key <1; key++) {
+            for (let key = 0; key <1; key++) {
 
               cy.get(item[Object.keys(item)[key]]).click();
              }    
@@ -103,51 +103,65 @@ describe ('Purchase flow',()=>{
 
     })
 
-    it.skip('TC4:Make a purchase of more than one item and remove one or more from the cart.',()=>{
+    it('TC4:Select more than one item and remove one or more from the cart.',
+    ()=>{
+
+        cy.fixture('items').then((item)=>{
+
+            for (let key = 0; key <4; key++) {
+
+              cy.get(item[Object.keys(item)[key]]).click();
+             }    
+        })
+
+        cy.fixture('removeItems').then((remove)=>{
+
+            for (let key = 0; key <2; key++) {
+
+                cy.get(remove[Object.keys(remove)[key]]).click();
+               }         
+        })
+
+        cy.get('.title').should('have.text', 'Products')
+
+    })
+
+    it.only('TC5: Select more than one item, remove from Description page and return to Products page.',
+    ()=>{
+        cy.fixture('items').then((item)=>{
+
+            for (let key = 0; key <4; key++) {
+
+              cy.get(item[Object.keys(item)[key]]).click();
+             }    
+        })
 
         cy.fixture('cart').then((cart)=>{
-            cy.get('#item_0_title_link').contains('Sauce Labs Bike Light')
-            cy.get(cart.add).first().click();
             cy.get(cart.cartLink).click();
-            cy.get(cart.removeBtt).click();
-            cy.wait(3000)
+            cy.fixture('removeItems').then((remove)=>{
+
+                for (let key = 0; key <2; key++) {
+    
+                    cy.get(remove[Object.keys(remove)[key]]).click();
+                   }         
+            })
+
             cy.get(cart.contShopping).click();
-            //
-            cy.get(cart.checkoutBtt).click();
-            cy.get(cart.userName).type('Janna')
-            cy.get(cart.lastName).type('Aquino')
-            cy.get(cart.zipCode).type('10014')
-            cy.get(cart.continueBtt).click();
-            cy.get(cart.finishBtt).click();
-            cy.get(cart.backHome).click();
-            cy.logout();
-            
-            
+            cy.get('.title').should('have.text', 'Products')
+
         })
+
+  
+
 
     })
 
-    it.skip('TC5: Make a purchase of more than one item and return to the cart.',()=>{
+    it.skip('TC6: Select more than one item and return to the cart, select n items and complete the flow.',()=>{
 
-        cy.fixture('cart').then((cart)=>{
-           
-            
-            
-        })
 
     })
 
-    it.skip('TC6: Make a purchase of more than one item and return to the cart, select n items and complete the flow.',()=>{
-
-        cy.fixture('cart').then((cart)=>{
-           
-            
-            
-        })
-
-    })
-
-    it.skip('TC7: Carry out the purchase flow and do not enter the name in Checkout.',()=>{
+    it('TC7: Carry out the purchase flow and do not enter the name in Checkout.',()=>{
 
         cy.fixture('cart').then((cart)=>{
             
@@ -169,7 +183,7 @@ describe ('Purchase flow',()=>{
 
     })
 
-    it.skip('TC8:Carry out the purchase flow and do not enter the last name in Checkout.',()=>{
+    it('TC8:Carry out the purchase flow and do not enter the last name in Checkout.',()=>{
 
         cy.fixture('cart').then((cart)=>{
             cy.get('.inventory_item_label').contains('Sauce Labs Backpack')
@@ -191,7 +205,7 @@ describe ('Purchase flow',()=>{
 
     })
 
-    it.skip('TC9: Carry out the purchase flow and do not enter the zip code at Checkout.',()=>{
+    it('TC9: Carry out the purchase flow and do not enter the zip code at Checkout.',()=>{
 
         cy.fixture('cart').then((cart)=>{
             
@@ -213,7 +227,7 @@ describe ('Purchase flow',()=>{
 
     })
 
-    it.skip('TC10: Select multiple items and refresh the page..',()=>{
+    it.skip('TC10: Select multiple items and refresh the page clicking "reset App State" option.',()=>{
 
         cy.fixture('').then(()=>{
             
